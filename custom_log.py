@@ -5,6 +5,10 @@ import os
 import inspect
 import random
 from logging.handlers import RotatingFileHandler
+
+# custom setting
+custom_name = 'sample'
+
 # default log setting
 date_time = datetime.datetime.now().strftime("%Y_%m_%d")
 log_name = 'logging_scan_' + date_time + '.log'
@@ -41,7 +45,7 @@ auto_logger.addHandler(custom_handler)
 # uuid setting
 random.seed(datetime.datetime.now())
 log_id = str("%04d" % random.randint(1, 9999))
-local_id = 'eth-' + log_id
+local_id = custom_name + log_id
 
 
 def info(input_str):
@@ -128,13 +132,13 @@ if __name__ == '__main__':
         print(ex_test)
     finally:
         if exit_code == 0:
-            print('----------------------')
-            print('| azure_vault : PASS |')
-            print('----------------------')
+            print('--------------------------------')
+            print('| unit test(custom_log) : PASS |')
+            print('--------------------------------')
         else:
-            print('----------------------')
-            print('| azure_vault : FAIL |')
-            print('----------------------')
+            print('-------------------------------')
+            print('| unit test(custom_log) : FAIL|')
+            print('-------------------------------')
         sys.exit(exit_code)
 
 
